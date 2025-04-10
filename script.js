@@ -5,44 +5,43 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('primary-color').value = savedPrimaryColor;
     document.getElementById('secondary-color').value = savedSecondaryColor;
 
-    updateTheme(savedPrimaryColor, savedSecondaryColor );
-});
+    updateTheme(savedPrimaryColor, savedSecondaryColor);
+ document.getElementById('settings-btn').addEventListener('click', function() {
+        document.getElementById('settings').style.display = 'block';
+        document.getElementById('modal-overlay').style.display = 'block';
+    });
 
-document.getElementById('settings-btn').addEventListener('click', function() {
-    document.getElementById('settings').style.display = 'block';
-    document.getElementById('modal-overlay').style.display = 'block';
-});
+    document.getElementById('close-settings').addEventListener('click', function() {
+        document.getElementById('settings').style.display = 'none';
+        document.getElementById('modal-overlay').style.display = 'none';
+    });
 
-document.getElementById('close-settings').addEventListener('click', function() {
-    document.getElementById('settings').style.display = 'none';
-    document.getElementById('modal-overlay').style.display = 'none';
-});
+    document.getElementById('modal-overlay').addEventListener('click', function() {
+        document.getElementById('settings').style.display = 'none';
+        this.style.display = 'none';
+    });
 
-document.getElementById('modal-overlay').addEventListener('click', function() {
-    document.getElementById('settings').style.display = 'none';
-    this.style.display = 'none';
-});
+    document.getElementById('primary-color').addEventListener('input', function() {
+        const primaryColor = this.value;
+        const secondaryColor = document.getElementById('secondary-color').value;
+        updateTheme(primaryColor, secondaryColor);
+        localStorage.setItem('primaryColor', primaryColor);
+    });
 
-document.getElementById('primary-color').addEventListener('input', function() {
-    const primaryColor = this.value;
-    const secondaryColor = document.getElementById('secondary-color').value;
-    updateTheme(primaryColor, secondaryColor);
-    localStorage.setItem('primaryColor', primaryColor);
-});
+    document.getElementById('secondary-color').addEventListener('input', function() {
+        const primaryColor = document.getElementById('primary-color').value;
+        const secondaryColor = this.value;
+        updateTheme(primaryColor, secondaryColor);
+        localStorage.setItem('secondaryColor', secondaryColor);
+    });
 
-document.getElementById('secondary-color').addEventListener('input', function() {
-    const primaryColor = document.getElementById('primary-color').value;
-    const secondaryColor = this.value;
-    updateTheme(primaryColor, secondaryColor);
-    localStorage.setItem('secondaryColor', secondaryColor);
-});
+    function updateTheme(primaryColor, secondaryColor) {
+        document.body.style.setProperty('--primary-color', primaryColor);
+        document.body.style.setProperty('--secondary-color', secondaryColor);
+        const boxes = document.querySelectorAll('.game-box');
+        const buttons = document.querySelectorAll('button');
 
-function updateTheme(primaryColor, secondaryColor) {
-    document.body.style.setProperty('--primary-color', primaryColor);
-    document.body.style.setProperty('--secondary-color', secondaryColor);
-    const boxes = document.querySelectorAll('.game-box');
-    const buttons = document.querySelectorAll('button');
-
-    boxes.forEach(box => box.style.boxShadow = `0 0 15px ${primaryColor}`);
-    buttons.forEach(btn => btn.style.backgroundColor = primaryColor);
-}
+        boxes.forEach(box => box.style.boxShadow = `0 0 15px ${primaryColor}`);
+        buttons.forEach(btn => btn.style.backgroundColor = primaryColor);
+        buttons.forEach(btn => btn.style.transition = 'background-color 0.3s');
+    }
