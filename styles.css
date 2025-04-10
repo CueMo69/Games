@@ -33,6 +33,8 @@ h1 {
     text-align: center;
     box-shadow: 0 0 15px purple;
     transition: transform 0.2s;
+    text-decoration: none;
+    color: white;
 }
 
 .game-box:hover {
@@ -64,6 +66,7 @@ button:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 1001;
 }
 
 .settings h2 {
@@ -73,4 +76,35 @@ button:hover {
 .settings label {
     display: block;
     margin: 10px 0;
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.theme-black-purple {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.theme-black-purple .game-box {
+    background-color: #3e3e3e;
+    box-shadow: 0 0 15px purple;
+}
+
+.theme-white-blue {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.theme-white-blue .game-box {
+    background-color: #f0f0f0;
+    box-shadow: 0 0 15px blue;
 }
