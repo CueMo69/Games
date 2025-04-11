@@ -3,25 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Sliding Games</title>
+    <title>Game Selector</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="carousel-container">
-        <div class="carousel">
-            <div class="game" onclick="openGame('subwaysurfers/index.html')">
-                <img src="images/subwaysurfers.jpg" alt="Subway Surfers">
-                <p>Subway Surfers</p>
-            </div>
-            <div class="game" onclick="openGame('monsterjam/index.html')">
-                <img src="images/monsterjam.jpg" alt="Monster Jam">
-                <p>Monster Jam</p>
-            </div>
-            <div class="game" onclick="openGame('mariobros/index.html')">
-                <img src="images/mariobros.jpg" alt="New Super Mario Bros">
-                <p>New Super Mario Bros</p>
-            </div>
-            <!-- Add more games here -->
+    <div class="modal-overlay" id="modal-overlay"></div>
+    <div class="container">
+        <h1>Game Selector</h1>
+        <div class="game-slider">
+            <div class="game-box" data-game="Game 1">Game 1</div>
+            <div class="game-box" data-game="Game 2">Game 2</div>
+            <div class="game-box" data-game="Game 3">Game 3</div>
+            <div class="game-box" data-game="Game 4">Game 4</div>
+        </div>
+        <button id="settings-btn">Settings</button>
+        <div id="settings" class="settings">
+            <h2>Settings</h2>
+            <label for="primary-color">Select Primary Color:</label>
+            <input type="color" id="primary-color" value="#800080">
+            <label for="secondary-color">Select Secondary Color:</label>
+            <input type="color" id="secondary-color" value="#ff00ff">
+            <button id="close-settings">Close</button>
         </div>
     </div>
     <script src="script.js"></script>
