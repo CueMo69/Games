@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('secondary-color').value = savedSecondaryColor;
 
     updateTheme(savedPrimaryColor, savedSecondaryColor);
- document.getElementById('settings-btn').addEventListener('click', function() {
+
+    document.getElementById('settings-btn').addEventListener('click', function() {
         document.getElementById('settings').style.display = 'block';
         document.getElementById('modal-overlay').style.display = 'block';
     });
@@ -41,7 +42,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const boxes = document.querySelectorAll('.game-box');
         const buttons = document.querySelectorAll('button');
 
-        boxes.forEach(box => box.style.boxShadow = `0 0 15px ${primaryColor}`);
-        buttons.forEach(btn => btn.style.backgroundColor = primaryColor);
-        buttons.forEach(btn => btn.style.transition = 'background-color 0.3s');
+        boxes.forEach(box => {
+            box.style.boxShadow = `0 0 15px ${secondaryColor}`;
+        });
+        buttons.forEach(btn => {
+            btn.style.backgroundColor = secondaryColor;
+        });
     }
+});
