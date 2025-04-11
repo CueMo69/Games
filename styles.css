@@ -40,7 +40,6 @@ h1 {
     text-align: center;
     box-shadow: 0 0 15px var(--secondary-color);
     transition: transform 0.2s, box-shadow 0.2s;
-    text-decoration: none;
     color: white;
     flex: 0 0 auto; /* Prevent flex items from shrinking */
 }
