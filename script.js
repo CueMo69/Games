@@ -7,17 +7,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateTheme(savedPrimaryColor, savedSecondaryColor);
 
-    document.getElementById('settings-btn').addEventListener('click', function() {
+    document.getElementById('settings-btn').addEventListener('click', () => {
         document.getElementById('settings').style.display = 'block';
         document.getElementById('modal-overlay').style.display = 'block';
     });
 
-    document.getElementById('close-settings').addEventListener('click', function() {
+    document.getElementById('close-settings').addEventListener('click', () => {
         document.getElementById('settings').style.display = 'none';
         document.getElementById('modal-overlay').style.display = 'none';
     });
 
-    document.getElementById('modal-overlay').addEventListener('click', function() {
+    document.getElementById('modal-overlay').addEventListener('click', () => {
         document.getElementById('settings').style.display = 'none';
         this.style.display = 'none';
     });
@@ -49,4 +49,16 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.style.backgroundColor = secondaryColor;
         });
     }
+
+    // Add functionality for the Add Game button
+    document.getElementById('add-game-btn').addEventListener('click', () => {
+        const newGame = prompt('Enter the name of the new game:');
+        if (newGame) {
+            const gameBox = document.createElement('div');
+            gameBox.className = 'game-box';
+            gameBox.setAttribute('data-game', newGame);
+            gameBox.textContent = newGame;
+            document.querySelector('.game-slider').appendChild(gameBox);
+        }
+    });
 });
