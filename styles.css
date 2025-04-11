@@ -1,5 +1,10 @@
+:root {
+    --primary-color: #800080; /* Default primary color */
+    --secondary-color: #ff00ff; /* Default secondary color */
+}
+
 body {
-    background-color: #121212;
+    background-color: var(--primary-color);
     color: #ffffff;
     font-family: Arial, sans-serif;
     display: flex;
@@ -7,6 +12,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    transition: background-color 0.3s;
 }
 
 .container {
@@ -15,13 +21,14 @@ body {
 
 h1 {
     margin-bottom: 20px;
-    text-shadow: 0 0 10px var(--primary-color);
+    text-shadow: 0 0 10px var(--secondary-color);
 }
 
-.game-boxes {
+.game-slider {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 20px;
     gap: 20px;
 }
 
@@ -31,10 +38,11 @@ h1 {
     padding: 20px;
     width: 150px;
     text-align: center;
-    box-shadow: 0 0 15px var(--primary-color);
-    transition: transform 0.2s;
+    box-shadow: 0 0 15px var(--secondary-color);
+    transition: transform 0.2s, box-shadow 0.2s;
     text-decoration: none;
     color: white;
+    flex: 0 0 auto; /* Prevent flex items from shrinking */
 }
 
 .game-box:hover {
@@ -46,14 +54,14 @@ button {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: var(--secondary-color);
+    background-color: #6a0dad;
 }
 
 .settings {
@@ -61,7 +69,7 @@ button:hover {
     background-color: #2e2e2e;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 0 15px var(--primary-color);
+    box-shadow: 0 0 15px var(--secondary-color);
     position: absolute;
     top: 50%;
     left: 50%;
