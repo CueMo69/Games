@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const savedPrimaryColor = localStorage.getItem('primaryColor') || '#800080';
     const savedSecondaryColor = localStorage.getItem('secondaryColor') || '#ff00ff';
-    
+
     document.getElementById('primary-color').value = savedPrimaryColor;
     document.getElementById('secondary-color').value = savedSecondaryColor;
 
@@ -19,17 +19,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('modal-overlay').addEventListener('click', () => {
         document.getElementById('settings').style.display = 'none';
-        this.style.display = 'none';
+        document.getElementById('modal-overlay').style.display = 'none';
     });
 
-    document.getElementById('primary-color').addEventListener('input', function() {
+    document.getElementById('primary-color').addEventListener('input', function () {
         const primaryColor = this.value;
         const secondaryColor = document.getElementById('secondary-color').value;
         updateTheme(primaryColor, secondaryColor);
         localStorage.setItem('primaryColor', primaryColor);
     });
 
-    document.getElementById('secondary-color').addEventListener('input', function() {
+    document.getElementById('secondary-color').addEventListener('input', function () {
         const primaryColor = document.getElementById('primary-color').value;
         const secondaryColor = this.value;
         updateTheme(primaryColor, secondaryColor);
@@ -49,16 +49,4 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.style.backgroundColor = secondaryColor;
         });
     }
-
-    // Add functionality for the Add Game button
-    document.getElementById('add-game-btn').addEventListener('click', () => {
-        const newGame = prompt('Enter the name of the new game:');
-        if (newGame) {
-            const gameBox = document.createElement('div');
-            gameBox.className = 'game-box';
-            gameBox.setAttribute('data-game', newGame);
-            gameBox.textContent = newGame;
-            document.querySelector('.game-slider').appendChild(gameBox);
-        }
-    });
 });
