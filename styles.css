@@ -32,6 +32,11 @@ h1 {
     gap: 20px;
 }
 
+a.game-link {
+    text-decoration: none;
+    color: inherit;
+}
+
 .game-box {
     background-color: #3e3e3e;
     border-radius: 15px;
